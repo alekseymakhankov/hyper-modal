@@ -1,0 +1,30 @@
+export const defaultProps = {
+  afterClose: undefined,
+  ariaEnabled: true,
+  ariaProps: {
+    'aria-describedby': 'hyper-modal-description',
+    'aria-labelledby': 'hyper-modal-title',
+    role: 'dialog',
+  },
+  beforeClose: undefined,
+  classes: undefined,
+  childrenMode: true,
+  closeDebounceTimeout: 0,
+  closeIconPosition: {
+    vertical: 'top',
+    horizontal: 'right',
+  },
+  closeOnCloseIconClick: true,
+  closeOnDimmerClick: true,
+  closeOnEscClick: true,
+  dimmerEnabled: true,
+  isFullscreen: false,
+  portalMode: false,
+  portalNode: undefined,
+  position: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  renderCloseIcon: undefined,
+  renderContent: undefined,
+};
