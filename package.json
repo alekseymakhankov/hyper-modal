@@ -52,5 +52,13 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "modal",
+    "react-modal",
+    "accessible",
+    "dialog",
+    "react-dialog"
   ]
 }
