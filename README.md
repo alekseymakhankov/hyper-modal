@@ -4,6 +4,11 @@
 Welcome to the react hyper modal repository 😄
 I want to introduce you to an awesome react component for displaying modal windows
 
+![dependecies](https://img.shields.io/badge/dependecies-no%20dependencies-green.svg)
+![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
+![](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
+![](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
+
 ## Table of contents
 
 - [Installation](#installation)
