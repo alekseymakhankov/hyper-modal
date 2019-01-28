@@ -68,7 +68,7 @@ class MyComponent extends React.Component {
 ## <a id="properties"></a>Properties
 You can find props types and default props below the table.
 
-##### ***** - required props
+##### **\*** - required props
 
 Props | Description
 ------------ | -------------
@@ -85,7 +85,7 @@ closeOnDimmerClick | close the modal by pressing on dimmer
 closeOnEscClick | close the modal by pressing ESC
 dimmerEnabled | describing if the dimmer should be shown or not
 isFullscreen | describing if the modal should be shown in full screen or not
-isOpen ***** | describing if the modal should be shown or not
+isOpen **\*** | describing if the modal should be shown or not
 modalContentRef | [reference](https://reactjs.org/docs/refs-and-the-dom.html) to the modal content `div`
 modalWrapperRef | [reference](https://reactjs.org/docs/refs-and-the-dom.html) to the modal wrapper `div`
 portalMode | describing if the modal should be rendered in [React Portal](https://reactjs.org/docs/portals.html) or not
@@ -93,7 +93,7 @@ portalNode | HTML node to create [React Portal](https://reactjs.org/docs/portals
 position | setting the modal position
 renderCloseIcon | callback for rendering custom close button
 renderContent | callback for rendering custom modal content
-requestClose ***** | callback to close the modal
+requestClose **\*** | callback to close the modal
 unmountOnClose | describing if the modal should be unmounted when close
 
 ### <a id="default-properties"></a>Default properties
