@@ -2,7 +2,7 @@
 #### Fully customizable and accessible modal react component
 
 Welcome to the react hyper modal repository 😄
-I want to introduce you to a awesome react component for displaying modal windows
+I want to introduce you to an awesome react component for displaying modal windows
 
 ## Table of contents
 
