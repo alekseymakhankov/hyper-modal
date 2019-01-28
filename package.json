@@ -1,6 +1,6 @@
 {
   "name": "react-hyper-modal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Fully customizable and accessible modal react component",
   "author": "Aleksey Makhankov",
   "license": "MIT",
@@ -52,5 +52,13 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "modal",
+    "react-modal",
+    "accessible",
+    "dialog",
+    "react-dialog"
   ]
 }
