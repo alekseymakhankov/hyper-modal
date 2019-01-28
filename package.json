@@ -1,6 +1,6 @@
 {
-  "name": "hyper-modal",
-  "version": "1.0.0",
+  "name": "react-hyper-modal",
+  "version": "1.0.2",
   "description": "Fully customizable and accessible modal react component",
   "author": "Aleksey Makhankov",
   "license": "MIT",
@@ -18,8 +18,7 @@
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
+    "prepare": "npm run build"
   },
   "dependencies": {},
   "peerDependencies": {
