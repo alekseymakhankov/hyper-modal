@@ -1,4 +1,9 @@
+sudo: false
 language: node_js
 node_js:
-  - 9
-  - 8
+  - "10"
+before_install:
+- "npm install -g npm@'>=3.5.1'"
+after_script:
+- "npm run test"
+- "npm install coveralls && cat ./coverage/lcov.info | coveralls"
