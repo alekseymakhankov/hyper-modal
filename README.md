@@ -8,6 +8,8 @@ I want to introduce you to an awesome react component for displaying modal windo
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 ![](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
 ![](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
+[![Coverage Status](https://coveralls.io/repos/github/alekseymakhankov/hyper-modal/badge.svg?branch=dev)](https://coveralls.io/github/alekseymakhankov/hyper-modal?branch=dev)
+[![Build Status](https://travis-ci.org/alekseymakhankov/hyper-modal.svg?branch=master)](https://travis-ci.org/alekseymakhankov/hyper-modal)
 
 ## Table of contents
 
@@ -104,15 +106,12 @@ unmountOnClose | describing if the modal should be unmounted when close
 ### <a id="default-properties"></a>Default properties
 ```javascript
 {
-  afterClose: undefined,
   ariaEnabled: true,
   ariaProps: {
     'aria-describedby': 'hyper-modal-description',
     'aria-labelledby': 'hyper-modal-title',
     role: 'dialog',
   },
-  beforeClose: undefined,
-  classes: undefined,
   childrenMode: true,
   closeDebounceTimeout: 0,
   closeIconPosition: {
@@ -125,13 +124,10 @@ unmountOnClose | describing if the modal should be unmounted when close
   dimmerEnabled: true,
   isFullscreen: false,
   portalMode: false,
-  portalNode: undefined,
   position: {
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  renderCloseIcon: undefined,
-  renderContent: undefined,
+  }
 }
 ```
 
