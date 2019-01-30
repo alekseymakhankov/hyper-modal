@@ -3,10 +3,10 @@ export const createElement = (className?: string): HTMLElement => {
   if (!currentNode) {
     currentNode = document.createElement('div');
     currentNode.setAttribute('id', 'hyper-modal-portal-id');
-    if (className) {
-      currentNode.classList.add(className);
-    }
     document.body.appendChild(currentNode);
+  }
+  if (className && !currentNode.classList.contains(className)) {
+    currentNode.classList.add(className);
   }
   return currentNode;
 }
