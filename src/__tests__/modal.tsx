@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { render, fireEvent } from 'react-testing-library'
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-console.log('FIREEVENT', fireEvent);
-import 'react-testing-library/cleanup-after-each';
 import Modal from '../index';
 
 const { mount } = Enzyme;
@@ -11,9 +8,8 @@ const { mount } = Enzyme;
 Enzyme.configure({adapter: new Adapter()});
 
 it('renders without crashing', () => {
-  const wrapper = render(<Modal isOpen={true} requestClose={() => ({})} />);
-  const { getByText } = wrapper;
-  expect(getByText('Hyper modal')).toBeTruthy();
+  const wrapper = mount(<Modal isOpen={true} requestClose={() => ({})} />);
+  expect(wrapper.instance()).toBeDefined();
 });
 
 it('should afterClose should be executed', () => {
