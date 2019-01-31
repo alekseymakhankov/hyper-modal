@@ -7,9 +7,22 @@ const { mount } = Enzyme;
 
 Enzyme.configure({adapter: new Adapter()});
 
-it('renders without crashing', () => {
+it('render without crashing', () => {
   const wrapper = mount(<Modal isOpen={true} requestClose={() => ({})} />);
   expect(wrapper.instance()).toBeDefined();
+});
+
+it('should be unmounted', () => {
+  const wrapper = mount(
+    <Modal
+      isOpen={true}
+      requestClose={() => ({})}
+      unmountOnClose
+    />
+  );
+  expect(wrapper.instance()).toBeDefined();
+  wrapper.unmount();
+  expect(wrapper).toMatchObject({});
 });
 
 it('should afterClose should be executed', () => {
@@ -50,6 +63,7 @@ it('should be closed by timeout', async () => {
       afterClose={afterClose}
       beforeClose={beforeClose}
       closeDebounceTimeout={1000}
+      portalMode
     />
   );
   const icon = wrapper.find('.hyper-close-icon-wrapper');
