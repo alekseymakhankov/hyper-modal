@@ -6,10 +6,10 @@ I want to introduce you to an awesome react component for displaying modal windo
 
 ![dependecies](https://img.shields.io/badge/dependecies-no%20dependencies-green.svg)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
-![](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
-![](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
-[![Coverage Status](https://coveralls.io/repos/github/alekseymakhankov/hyper-modal/badge.svg?branch=dev)](https://coveralls.io/github/alekseymakhankov/hyper-modal?branch=dev)
+[![Coverage Status](https://coveralls.io/repos/github/alekseymakhankov/hyper-modal/badge.svg?branch=master)](https://coveralls.io/github/alekseymakhankov/hyper-modal?branch=master)
 [![Build Status](https://travis-ci.org/alekseymakhankov/hyper-modal.svg?branch=master)](https://travis-ci.org/alekseymakhankov/hyper-modal)
+![min](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
+![minzip](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
 
 ## Table of contents
 
