@@ -66,7 +66,7 @@ class Modal extends React.Component<IModalProps, IModalState> {
       beforeClose();
     }
     if (closeDebounceTimeout) {
-      defferCall(
+      return defferCall(
         () => {
           this.closeModal();
           requestClose();
@@ -74,10 +74,10 @@ class Modal extends React.Component<IModalProps, IModalState> {
         },
         closeDebounceTimeout,
       );
-      return;
     }
     requestClose();
     this.handleAfterClose();
+    return;
   }
 
   renderDimmer = () => {
