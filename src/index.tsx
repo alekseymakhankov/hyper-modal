@@ -85,7 +85,7 @@ class Modal extends React.Component<IModalProps, IModalState> {
     return (
       <div
         className={
-          classnames('hyper-dimmer-wrapper', classes && classes.contentClassName)
+          classnames('hyper-dimmer-wrapper', classes && classes.dimmerClassName)
         }
         onClick={closeOnDimmerClick ? this.handleClose : undefined}
       />
