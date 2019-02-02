@@ -6,3 +6,5 @@ export const DefaultCloseIcon = () => {
     <i className="hyper-close-icon" />
   );
 }
+
+export default DefaultCloseIcon;
