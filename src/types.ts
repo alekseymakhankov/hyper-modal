@@ -41,8 +41,9 @@ export interface IModalProps {
   closeOnDimmerClick?: boolean;
   closeOnEscClick?: boolean;
   dimmerEnabled?: boolean;
+  disableScroll?: boolean;
   isFullscreen?: boolean;
-  isOpen: boolean;
+  isOpen?: boolean;
   modalContentRef?: React.RefObject<HTMLDivElement>;
   modalWrapperRef?: React.RefObject<HTMLDivElement>;
   portalMode?: boolean;
@@ -50,7 +51,8 @@ export interface IModalProps {
   position?: IPositionProps;
   renderCloseIcon?: () => JSX.Element | null | string;
   renderContent?: () => JSX.Element | JSX.Element[] | null | string;
-  requestClose: () => void;
+  renderOpenButton?: boolean | ((requestOpen: () => void) => JSX.Element | string);
+  requestClose?: () => void;
   unmountOnClose?: boolean;
 }
 

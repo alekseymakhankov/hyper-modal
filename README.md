@@ -11,6 +11,9 @@ I want to introduce you to an awesome react component for displaying modal windo
 ![min](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
 ![minzip](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
 
+## [Live demo](https://alekseymakhankov.github.io/packages/?package=hyper-modal)
+
+
 ## Table of contents
 
 - [Installation](#installation)
@@ -75,7 +78,7 @@ class MyComponent extends React.Component {
 ## <a id="properties"></a>Properties
 You can find props types and default props below the table.
 
-##### **\*** - required props
+##### **\*** - required for controlled modal component
 
 Props | Description
 ------------ | -------------
@@ -100,6 +103,7 @@ portalNode | HTML node to create [React Portal](https://reactjs.org/docs/portals
 position | setting the modal position
 renderCloseIcon | callback for rendering custom close button
 renderContent | callback for rendering custom modal content
+renderOpenButton | callback or boolean describing if the modal should be uncontrolled component
 requestClose **\*** | callback to close the modal
 unmountOnClose | describing if the modal should be unmounted when close
 
@@ -183,6 +187,7 @@ interface IModalProps {
   position?: IPositionProps;
   renderCloseIcon?: () => JSX.Element | null | string;
   renderContent?: () => JSX.Element | JSX.Element[] | null | string;
+  renderOpenButton?: boolean | ((requestOpen: () => void) => JSX.Element | string);
   requestClose: () => void;
   unmountOnClose?: boolean;
 }

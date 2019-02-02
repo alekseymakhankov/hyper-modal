@@ -1,19 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DefaultCloseIcon, DefaultModalContent } from './components';
+import { DefaultButton, DefaultCloseIcon, DefaultModalContent } from './components';
 import {
   buildContentStyle,
   classnames,
   createElement,
   defaultProps,
   defferCall,
+  disableScroll as disableScrollHelper,
 } from './helpers';
 import { IModalProps, IModalState } from './types';
 import './style.scss';
 
 const ESC_KEY = 27;
 
-class Modal extends React.Component<IModalProps, IModalState> {
+class HyperModal extends React.Component<IModalProps, IModalState> {
   constructor(props: IModalProps) {
     super(props);
     this.state = {
@@ -24,7 +25,18 @@ class Modal extends React.Component<IModalProps, IModalState> {
   static defaultProps = defaultProps;
 
   static getDerivedStateFromProps(props: IModalProps, state: IModalState) {
+    if (state.isInnerOpen) {
+      if (props.disableScroll) {
+        disableScrollHelper(state.isInnerOpen);
+      }
+      return {
+        isInnerOpen: true,
+      };
+    }
     if (props.isOpen !== state.isInnerOpen && !props.unmountOnClose) {
+      if (props.disableScroll) {
+        disableScrollHelper(props.isOpen);
+      }
       return {
         isInnerOpen: props.isOpen,
       };
@@ -49,9 +61,23 @@ class Modal extends React.Component<IModalProps, IModalState> {
       event.stopPropagation();
       this.handleClose();
     }
-  };
+  }
 
-  closeModal = () => this.setState({ isInnerOpen: false });
+  openModal = () => {
+    const { disableScroll } = this.props;
+    this.setState({ isInnerOpen: true });
+    if (disableScroll) {
+      disableScrollHelper(true);
+    }
+  }
+
+  closeModal = () => {
+    const { disableScroll } = this.props;
+    this.setState({ isInnerOpen: false });
+    if (disableScroll) {
+      disableScrollHelper(false);
+    }
+  }
 
   handleAfterClose = () => {
     const { afterClose } = this.props;
@@ -69,13 +95,18 @@ class Modal extends React.Component<IModalProps, IModalState> {
       return defferCall(
         () => {
           this.closeModal();
-          requestClose();
+          if (requestClose) {
+            requestClose();
+          }
           this.handleAfterClose();
         },
         closeDebounceTimeout,
       );
     }
-    requestClose();
+    this.closeModal();
+    if (requestClose) {
+      requestClose();
+    }
     this.handleAfterClose();
     return;
   }
@@ -110,6 +141,19 @@ class Modal extends React.Component<IModalProps, IModalState> {
         {renderCloseIcon ? renderCloseIcon() : (<DefaultCloseIcon />)}
       </div>
     );
+  }
+
+  renderButton = () => {
+    const { renderOpenButton } = this.props;
+    if (renderOpenButton) {
+      if (typeof renderOpenButton === 'boolean') {
+        return (
+          <DefaultButton onClick={this.openModal} />
+        );
+      }
+      return renderOpenButton(this.openModal);
+    }
+    return (null);
   }
 
   renderModalContent = () => {
@@ -196,8 +240,13 @@ class Modal extends React.Component<IModalProps, IModalState> {
   }
 
   render() {
-    return this.renderModal();
+    return (
+      <React.Fragment>
+        {this.renderButton()}
+        {this.renderModal()}
+      </React.Fragment>
+    );
   }
 }
 
-export default Modal;
+export default HyperModal;

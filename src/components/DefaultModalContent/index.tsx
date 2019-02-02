@@ -28,3 +28,5 @@ export const DefaultModalContent = (props: IDefaultModalContentProps) => {
     </div>
   );
 };
+
+export default DefaultModalContent;

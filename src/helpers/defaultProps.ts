@@ -5,6 +5,7 @@ export const defaultProps = {
     'aria-labelledby': 'hyper-modal-title',
     role: 'dialog',
   },
+  disableScroll: true,
   childrenMode: true,
   closeDebounceTimeout: 0,
   closeIconPosition: {
