@@ -54,6 +54,5 @@
 }
 
 .body-noscroll {
-  overflow: hidden;
-  position: fixed;
+  overflow: hidden !important;
 }
