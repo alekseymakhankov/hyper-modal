@@ -15,11 +15,18 @@ it('render without crashing', () => {
 it('should be unmounted', () => {
   const wrapper = mount(
     <Modal
-      isOpen={true}
-      requestClose={() => ({})}
+      renderOpenButton={(requestOpen) => {
+        return (
+          <button id="open-button" onClick={requestOpen}>open</button>
+        )
+      }}
       unmountOnClose
     />
   );
+  const button = document.getElementById('open-button');
+  if (button) {
+    button.click();
+  }
   expect(wrapper.instance()).toBeDefined();
   wrapper.unmount();
   expect(wrapper).toMatchObject({});
