@@ -38,6 +38,8 @@ $ yarn add react-hyper-modal
 
 ## <a id="usage"></a>Usage
 
+#### Controlled modal component
+
 ```javascript
 import React from 'react';
 import HyperModal from 'react-hyper-modal';
@@ -70,6 +72,27 @@ class MyComponent extends React.Component {
       </HyperModal>
     );
   }
+}
+```
+
+#### Uncontrolled modal component
+
+```javascript
+import React from 'react';
+import HyperModal from 'react-hyper-modal';
+
+...
+
+const MyComponent = () => {
+  return (
+    <HyperModal
+      renderOpenButton={(requestOpen) => {
+        return (
+          <button onClick={requestOpen}>Open uncontrolled modal</button>
+        );
+      }
+    />
+  );
 }
 ```
 
