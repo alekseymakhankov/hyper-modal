@@ -124,7 +124,7 @@ class HyperModal extends React.Component<IModalProps, IModalState> {
   }
 
   renderCloseIcon = () => {
-    const { renderCloseIcon, closeOnCloseIconClick, closeIconPosition } = this.props;
+    const { classes, renderCloseIcon, closeOnCloseIconClick, closeIconPosition } = this.props;
     const iconClassNames = closeIconPosition
       ? classnames(
           'hyper-close-icon-wrapper',
@@ -134,7 +134,7 @@ class HyperModal extends React.Component<IModalProps, IModalState> {
       : 'hyper-close-icon-wrapper';
     return (
       <div
-        className={iconClassNames}
+        className={classnames(iconClassNames, classes && classes.closeIconClassName)}
         onClick={closeOnCloseIconClick ? this.handleClose : undefined}
         tabIndex={0}
       >
