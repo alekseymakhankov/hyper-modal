@@ -25,14 +25,10 @@ class HyperModal extends React.Component<IModalProps, IModalState> {
   static defaultProps = defaultProps;
 
   static getDerivedStateFromProps(props: IModalProps, state: IModalState) {
-    if (state.isInnerOpen) {
-      if (props.disableScroll) {
-        disableScrollHelper(state.isInnerOpen);
-      }
-      return {
-        isInnerOpen: true,
-      };
+    if (props.disableScroll) {
+      disableScrollHelper(state.isInnerOpen);
     }
+    
     if (props.isOpen !== state.isInnerOpen && !props.unmountOnClose) {
       if (props.disableScroll) {
         disableScrollHelper(props.isOpen);
@@ -43,6 +39,7 @@ class HyperModal extends React.Component<IModalProps, IModalState> {
     }
     return null;
   }
+
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
