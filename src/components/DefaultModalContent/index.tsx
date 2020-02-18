@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { IARIAProps } from '../../types';
+import * as React from 'react'
+import { IARIAProps } from '../../types'
 
-import './style.scss';
+import styles from './style.scss'
 
 export interface IDefaultModalContentProps {
   ariaEnabled?: boolean;
@@ -10,23 +10,23 @@ export interface IDefaultModalContentProps {
 }
 
 export const DefaultModalContent = (props: IDefaultModalContentProps) => {
-  const { ariaEnabled, ariaProps, handleClose } = props;
+  const { ariaEnabled, ariaProps, handleClose } = props
   const labelId = ariaEnabled && ariaProps
     ? ariaProps['aria-labelledby']
-    : undefined;
+    : undefined
   const descriptionId = ariaEnabled && ariaProps
     ? ariaProps['aria-describedby']
-    : undefined;
+    : undefined
 
   return (
-    <div className="hyper-modal-default-content">
-      <div className="title" id={labelId}>Hyper modal</div>
-      <div className="description" id={descriptionId}>
+    <div className={styles.hyperModalDefaultContent}>
+      <div className={styles.title} id={labelId}>Hyper modal</div>
+      <div className={styles.description} id={descriptionId}>
         Fully customizable and accessible modal
       </div>
-      <button tabIndex={1} onClick={handleClose}>Close modal</button>
+      <button type="button" onClick={handleClose}>Close modal</button>
     </div>
-  );
-};
+  )
+}
 
-export default DefaultModalContent;
+export default DefaultModalContent

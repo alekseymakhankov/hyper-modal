@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 export type TModalPosition = 'flex-start' | 'center' | 'flex-end';
 export type THorizontalPosition = 'left' | 'center' | 'right';

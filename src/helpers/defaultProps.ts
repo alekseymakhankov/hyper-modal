@@ -9,8 +9,8 @@ export const defaultProps = {
   childrenMode: true,
   closeDebounceTimeout: 0,
   closeIconPosition: {
-    vertical: 'top',
-    horizontal: 'right',
+    vertical: 'top' as const,
+    horizontal: 'right' as const,
   },
   closeOnCloseIconClick: true,
   closeOnDimmerClick: true,
@@ -19,7 +19,7 @@ export const defaultProps = {
   isFullscreen: false,
   portalMode: false,
   position: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
   },
-};
+}

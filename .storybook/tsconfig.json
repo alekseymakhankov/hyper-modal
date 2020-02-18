@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "root": true,
     "baseUrl": ".",
     "outDir": "build",
     "module": "esnext",

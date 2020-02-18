@@ -1,10 +1,8 @@
-import * as React from 'react';
-import './style.scss';
+import * as React from 'react'
+import styles from './style.scss'
 
-export const DefaultCloseIcon = () => {
-  return (
-    <i className="hyper-close-icon" />
-  );
-}
+export const DefaultCloseIcon = () => (
+  <i className={styles.hyperCloseIcon} />
+)
 
-export default DefaultCloseIcon;
+export default DefaultCloseIcon
