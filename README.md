@@ -5,7 +5,7 @@ Welcome to the react hyper modal repository 😄
 I want to introduce you to an awesome react component for displaying modal windows
 
 ![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)
-[![Coverage Status](https://coveralls.io/repos/github/alekseymakhankov/hyper-modal/badge.svg?branch=master)](https://coveralls.io/github/alekseymakhankov/hyper-modal?branch=master&service=github)
+[![Coverage Status](https://coveralls.io/repos/github/alekseymakhankov/hyper-modal/badge.svg?branch=master&service=github)](https://coveralls.io/github/alekseymakhankov/hyper-modal?branch=master&service=github)
 [![Build Status](https://travis-ci.org/alekseymakhankov/hyper-modal.svg?branch=master)](https://travis-ci.org/alekseymakhankov/hyper-modal)
 ![min](https://img.shields.io/bundlephobia/min/react-hyper-modal.svg)
 ![minzip](https://img.shields.io/bundlephobia/minzip/react-hyper-modal.svg)
