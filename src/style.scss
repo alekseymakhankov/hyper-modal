@@ -30,6 +30,7 @@
     height: 60%;
     z-index: 5;
     border-radius: 10px;
+    overflow: auto;
 
     &.fullscreen {
       width: 100%;

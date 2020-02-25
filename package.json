@@ -1,6 +1,6 @@
 {
   "name": "react-hyper-modal",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Fully customizable and accessible modal react component",
   "author": "Aleksey Makhankov",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "body-scroll-lock": "^2.6.4"
+    "react-remove-scroll": "^2.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",

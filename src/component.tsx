@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock/lib/bodyScrollLock.es6'
-
+import { RemoveScroll } from 'react-remove-scroll'
 import { DefaultModalContent } from './components'
 import {
   buildContentStyle,
@@ -46,7 +45,6 @@ export const HyperModal: React.FC<IModalProps> = ({
   unmountOnClose,
 }) => {
   const [isInnerOpen, setInnerOpen] = React.useState<boolean>(isOpen || false)
-  const [wrapperComponent, setWrapperComponent] = React.useState<HTMLElement | null>(null)
 
   React.useEffect(() => {
     if (typeof isOpen !== 'undefined') {
@@ -54,29 +52,13 @@ export const HyperModal: React.FC<IModalProps> = ({
     }
   }, [isOpen])
 
-  React.useEffect(() => {
-    if (!wrapperComponent) {
-      const wrapper: HTMLElement | null = document.getElementById(WRAPPER_COMPONENT_ID)
-      setWrapperComponent(wrapper)
-    }
-    return () => {
-      clearAllBodyScrollLocks()
-    }
-  }, [wrapperComponent])
-
   const openModal = React.useCallback(() => {
     setInnerOpen(true)
-    if (disableScroll) {
-      disableBodyScroll(wrapperComponent)
-    }
-  }, [disableScroll, wrapperComponent])
+  }, [])
 
   const closeModal = React.useCallback(() => {
     setInnerOpen(false)
-    if (disableScroll) {
-      enableBodyScroll(wrapperComponent)
-    }
-  }, [disableScroll, wrapperComponent])
+  }, [])
 
   const handleAfterClose = React.useCallback(() => {
     if (afterClose) {
@@ -175,26 +157,29 @@ export const HyperModal: React.FC<IModalProps> = ({
   ])
 
   const renderModalWrapper = React.useCallback(() => (
-    <div
-      id={WRAPPER_COMPONENT_ID}
-      className={
-        classnames({
-          [styles.hyperModalWrapper]: true,
-          [styles.visible]: isInnerOpen,
-          [(classes && classes.wrapperClassName) || '']: true,
-        })
-      }
-      ref={modalWrapperRef}
-      style={buildContentStyle(position)}
-    >
-      {dimmerEnabled && renderDimmer({
-        classes,
-        closeOnDimmerClick,
-        close: handleClose,
-      })}
-      {renderModalContent()}
-    </div>
+    <RemoveScroll forwardProps enabled={disableScroll && isInnerOpen}>
+      <div
+        id={WRAPPER_COMPONENT_ID}
+        className={
+          classnames({
+            [styles.hyperModalWrapper]: true,
+            [styles.visible]: isInnerOpen,
+            [(classes && classes.wrapperClassName) || '']: true,
+          })
+        }
+        ref={modalWrapperRef}
+        style={buildContentStyle(position)}
+      >
+        {dimmerEnabled && renderDimmer({
+          classes,
+          closeOnDimmerClick,
+          close: handleClose,
+        })}
+        {renderModalContent()}
+      </div>
+    </RemoveScroll>
   ), [
+    disableScroll,
     classes,
     closeOnDimmerClick,
     dimmerEnabled,
