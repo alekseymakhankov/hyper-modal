@@ -24,5 +24,6 @@ module.exports = {
     'node_modules',
     'dist',
     'src/types.ts',
+    'src/stories',
   ],
 }
