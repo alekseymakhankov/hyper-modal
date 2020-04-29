@@ -1,4 +1,4 @@
-.hyper-modal-wrapper {
+.hyperModalWrapper {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -13,7 +13,7 @@
     opacity: 1;
   }
 
-  .hyper-modal-content-wrapper {
+  .hyperModalContentWrapper {
     position: relative;
     background-color: #ffffff;
     width: 60%;
@@ -29,7 +29,7 @@
   }
 }
 
-.hyper-dimmer-wrapper {
+.hyperDimmerWrapper {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
@@ -39,7 +39,7 @@
   z-index: 1;
 }
 
-.hyper-close-icon-wrapper {
+.hyperCloseIconWrapper {
   position: absolute;
   display: block;
   cursor: pointer;

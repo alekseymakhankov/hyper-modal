@@ -1,4 +1,4 @@
-.stack-wrapper {
+.stackWrapper {
   position: relative;
   width: 60%;
   height: 60%;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.hyper-modal-content-wrapper {
+.hyperModalContentWrapper {
   position: absolute;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   background-color: #ffffff;
@@ -21,7 +21,7 @@
     height: 100%;
   }
 
-  .hyper-close-icon-wrapper {
+  .hyperCloseIconWrapper {
     position: absolute;
     display: block;
     cursor: pointer;
