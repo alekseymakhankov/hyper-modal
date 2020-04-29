@@ -6,6 +6,8 @@ import resolve from '@rollup/plugin-node-resolve'
 import url from '@rollup/plugin-url'
 import svgr from '@svgr/rollup'
 import progress from 'rollup-plugin-progress'
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
+import { terser } from "rollup-plugin-terser"
 
 import pkg from './package.json'
 
@@ -43,5 +45,7 @@ export default {
       clean: true,
     }),
     commonjs(),
+    sizeSnapshot(),
+    terser()
   ],
 }
