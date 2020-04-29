@@ -42,6 +42,9 @@ export const HyperModal: React.FC<IModalProps> = ({
   renderContent,
   renderOpenButton,
   requestClose,
+  stackable = defaultProps.stackable,
+  stackableIndex = defaultProps.stackableIndex,
+  stackContentSettings = defaultProps.stackContentSettings,
   unmountOnClose,
 }) => {
   const [isInnerOpen, setInnerOpen] = React.useState<boolean>(isOpen || false)
@@ -156,6 +159,59 @@ export const HyperModal: React.FC<IModalProps> = ({
     renderContent,
   ])
 
+  const getProps = React.useCallback((index, props, length) => {
+    const {
+      widthRatio = defaultProps.stackContentSettings.widthRatio,
+      topOffsetRatio = defaultProps.stackContentSettings.topOffsetRatio,
+      transition = defaultProps.stackContentSettings.transition,
+      opacityRatio = defaultProps.stackContentSettings.opacityRatio,
+    } = stackContentSettings
+    return {
+      ...props,
+      style: {
+        transition,
+        width: `${100 - (length - index - 1) * widthRatio}%`,
+        top: `${0 - (length - index - 1) * topOffsetRatio}%`,
+        opacity: 1 - (length - index - 1) * opacityRatio,
+        zIndex: 1000 - (length - index - 1) * 10,
+      },
+    }
+  }, [])
+
+  const renderStackModalWrapper = React.useCallback(() => {
+    if (children) {
+      const closeIcon = renderCloseIcon({
+        classes,
+        closeOnCloseIconClick,
+        closeIconPosition,
+        close: handleClose,
+        renderCloseIconProp,
+      })
+      return (children as any)({
+        classes,
+        closeIcon,
+        getProps,
+        handleClose,
+        isFullscreen,
+        modalContentRef,
+        stackableIndex,
+      })
+    }
+
+    return null
+  }, [
+    children,
+    classes,
+    closeIconPosition,
+    closeOnCloseIconClick,
+    getProps,
+    handleClose,
+    isFullscreen,
+    modalContentRef,
+    renderCloseIconProp,
+    stackableIndex,
+  ])
+
   const renderModalWrapper = React.useCallback(() => (
     <RemoveScroll forwardProps enabled={disableScroll && isInnerOpen}>
       <div
@@ -175,7 +231,7 @@ export const HyperModal: React.FC<IModalProps> = ({
           closeOnDimmerClick,
           close: handleClose,
         })}
-        {renderModalContent()}
+        {stackable ? renderStackModalWrapper() : renderModalContent()}
       </div>
     </RemoveScroll>
   ), [
@@ -188,6 +244,8 @@ export const HyperModal: React.FC<IModalProps> = ({
     modalWrapperRef,
     position,
     renderModalContent,
+    renderStackModalWrapper,
+    stackable,
   ])
 
   const renderModal = React.useCallback(() => {

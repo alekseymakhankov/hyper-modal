@@ -22,4 +22,12 @@ export const defaultProps = {
     alignItems: 'center' as const,
     justifyContent: 'center' as const,
   },
+  stackable: false,
+  stackableIndex: 0,
+  stackContentSettings: {
+    widthRatio: 4,
+    topOffsetRatio: 2,
+    transition: 'all 0.3s ease',
+    opacityRatio: 0.2,
+  }
 }

@@ -12,6 +12,7 @@ I want to introduce you to an awesome react component for displaying modal windo
 
 ## [Live demo](https://alekseymakhankov.github.io/packages/?package=hyper-modal)
 
+### Check also the new stackable content feature!
 
 ## Table of contents
 
@@ -95,6 +96,52 @@ const MyComponent = () => {
 }
 ```
 
+
+#### Stackable content example
+
+To use stackable content you should use `ModalStack` component and children as function. Every child of `ModalStack` will represent a different layout.
+
+```javascript
+import React from 'react';
+import HyperModal, { ModalStack, ModalStackProps } from 'react-hyper-modal';
+
+...
+
+const Component = () => {
+  const [index, setIndex] = React.useState(0)
+  return (
+    <HyperModal
+      stackable
+      stackableIndex={index}
+      renderOpenButton={requestOpen => (
+        <button type="button" className={styles.button} onClick={requestOpen}>Open stackable modal</button>
+      )}
+    >
+      {(props: ModalStackProps) => (
+        <ModalStack {...props}> // !!! It's very important to provide props to ModalStack
+          <div style={{ color: 'red' }}>
+            <div>1</div>
+            <button onClick={() => setIndex(1)}>open nested</button>
+            <button onClick={() => props.handleClose()}>close</button>
+          </div>
+          <div>
+            <div>2</div>
+            <button onClick={() => setIndex(2)}>open nested</button>
+            <button onClick={() => setIndex(0)}>close nested</button>
+            <button>close</button>
+          </div>
+          <div>
+            <div>3</div>
+            <button onClick={() => setIndex(1)}>close nested</button>
+            <button onClick={() => props.handleClose()}>close</button>
+          </div>
+        </ModalStack>
+      )}
+    </HyperModal>
+  )
+}
+```
+
 ### That's it! 🍰✨
 
 ## <a id="properties"></a>Properties
@@ -127,6 +174,9 @@ renderCloseIcon | callback for rendering custom close button
 renderContent | callback for rendering custom modal content
 renderOpenButton | callback or boolean describing if the modal should be uncontrolled component
 requestClose **\*** | callback to close the modal
+stackable | make content stackable
+stackableIndex | stack length
+stackContentSettings | stackable content settings
 unmountOnClose | describing if the modal should be unmounted when close
 
 ### <a id="default-properties"></a>Default properties
@@ -138,11 +188,12 @@ unmountOnClose | describing if the modal should be unmounted when close
     'aria-labelledby': 'hyper-modal-title',
     role: 'dialog',
   },
+  disableScroll: true,
   childrenMode: true,
   closeDebounceTimeout: 0,
   closeIconPosition: {
-    vertical: 'top',
-    horizontal: 'right',
+    vertical: 'top' as const,
+    horizontal: 'right' as const,
   },
   closeOnCloseIconClick: true,
   closeOnDimmerClick: true,
@@ -151,8 +202,16 @@ unmountOnClose | describing if the modal should be unmounted when close
   isFullscreen: false,
   portalMode: false,
   position: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+  },
+  stackable: false,
+  stackableIndex: 0,
+  stackContentSettings: {
+    widthRatio: 4,
+    topOffsetRatio: 2,
+    transition: 'all 0.3s ease',
+    opacityRatio: 0.2,
   }
 }
 ```

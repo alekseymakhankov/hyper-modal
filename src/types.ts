@@ -3,6 +3,12 @@ import * as React from 'react'
 export type TModalPosition = 'flex-start' | 'center' | 'flex-end';
 export type THorizontalPosition = 'left' | 'center' | 'right';
 export type TVerticalPosition = 'top' | 'middle' | 'bottom';
+export type StackContentSettings = {
+  widthRatio?: number;
+  topOffsetRatio?: number;
+  opacityRatio?: number;
+  transition?: string;
+}
 
 export interface IClassNamesProps {
   closeIconClassName?: string;
@@ -33,6 +39,7 @@ export interface IModalProps {
   ariaEnabled?: boolean;
   ariaProps?: IARIAProps;
   beforeClose?: () => void;
+  children?: React.ReactNode | ((props: ModalStackProps) => any);
   childrenMode?: boolean;
   classes?: IClassNamesProps;
   closeDebounceTimeout?: number;
@@ -53,7 +60,21 @@ export interface IModalProps {
   renderContent?: () => JSX.Element | JSX.Element[] | null | string;
   renderOpenButton?: boolean | ((requestOpen: () => void) => JSX.Element | string);
   requestClose?: () => void;
+  stackable?: boolean;
+  stackableIndex?: number;
+  stackContentSettings?: StackContentSettings;
   unmountOnClose?: boolean;
+}
+
+export interface ModalStackProps {
+  children: React.ReactElement[],
+  classes?: any;
+  closeIcon?: any;
+  getProps: (index: number, childProps: any, childrenLength: number) => any
+  handleClose: () => void
+  isFullscreen?: boolean;
+  modalContentRef?: any;
+  stackableIndex: number,
 }
 
 export interface IModalState {

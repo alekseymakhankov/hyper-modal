@@ -3,6 +3,7 @@ import {
   createElement,
   defferCall,
   defaultProps,
+  classnames,
 } from '../helpers'
 import { IPositionProps } from '../types'
 
@@ -25,6 +26,12 @@ it('should generate correct styles', () => {
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
   })
+  const testClassNames = {
+    first: 'first',
+    second: 'second',
+  }
+  const resultClassName = 'first second'
+  expect(classnames(testClassNames.first, testClassNames.second)).toBe(resultClassName)
 })
 
 it('should create correct node', () => {

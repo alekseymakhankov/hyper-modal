@@ -2,7 +2,7 @@ import * as React from 'react'
 import { act } from 'react-dom/test-utils'
 import * as Enzyme from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16'
-import Modal from '../index'
+import Modal, { ModalStack } from '../index'
 
 const { mount } = Enzyme
 
@@ -16,6 +16,7 @@ it('render without crashing', () => {
 it('should be unmounted', () => {
   const wrapper = mount(
     <Modal
+      closeOnEscClick
       renderOpenButton={(requestOpen) => (
         <button type="button" id="open-button" onClick={requestOpen}>open</button>
       )}
@@ -28,6 +29,7 @@ it('should be unmounted', () => {
       button.click()
     })
   }
+  wrapper.simulate('keyDown', { key: 'Escape' })
   expect(wrapper.instance()).toBeDefined()
   wrapper.unmount()
   expect(wrapper).toMatchObject({})
@@ -36,7 +38,12 @@ it('should be unmounted', () => {
 it('should afterClose should be executed', () => {
   const afterClose = jest.fn()
   const wrapper = mount(
-    <Modal isOpen requestClose={() => ({})} afterClose={afterClose} />,
+    <Modal
+      renderOpenButton
+      isOpen
+      requestClose={() => ({})}
+      closeIconPosition={{ vertical: 'bottom', horizontal: 'center' }}
+      afterClose={afterClose} />,
   )
   const icon = wrapper.find('div[data-name="close-icon"]')
   expect(icon).toBeDefined()
@@ -88,4 +95,36 @@ it('should be closed by timeout', async () => {
     expect(beforeClose).toBeCalled()
     expect(afterClose).toBeCalled()
   }
+})
+
+
+it('render stack without crashing', () => {
+  const wrapper = mount(
+    <Modal
+      isOpen
+      stackable
+      classes={{ contentClassName: 'className' }}
+      unmountOnClose
+      renderOpenButton={(requestOpen: any) => (
+        <button type="button" onClick={requestOpen}>Open uncontrolled modal</button>
+      )}
+    >
+      {(props) => (
+        <ModalStack {...props}>
+          <div>
+            <div>1</div>
+          </div>
+          <div>
+            <div>2</div>
+            <button>close</button>
+          </div>
+          <div>
+            <div>3</div>
+          </div>
+        </ModalStack>
+      )}
+    </Modal>
+  )
+
+  expect(wrapper.instance()).toBeDefined()
 })
