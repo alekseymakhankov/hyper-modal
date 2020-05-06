@@ -105,8 +105,8 @@ it('render stack without crashing', () => {
       stackable
       classes={{ contentClassName: 'className' }}
       unmountOnClose
-      renderOpenButton={(requestOpen: any) => (
-        <button type="button" onClick={requestOpen}>Open uncontrolled modal</button>
+      renderOpenButton={(requestOpen) => (
+        <button type="button" onClick={requestOpen}>Open stack modal</button>
       )}
     >
       {(props) => (

@@ -176,7 +176,7 @@ export const HyperModal: React.FC<IModalProps> = ({
         zIndex: 1000 - (length - index - 1) * 10,
       },
     }
-  }, [])
+  }, [stackContentSettings])
 
   const renderStackModalWrapper = React.useCallback(() => {
     if (children) {
