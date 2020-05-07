@@ -3,14 +3,13 @@ import { IARIAProps } from '../../types'
 
 import styles from './style.scss'
 
-export interface IDefaultModalContentProps {
+export interface DefaultModalContentProps {
   ariaEnabled?: boolean;
   ariaProps?: IARIAProps;
   handleClose: () => void;
 }
 
-export const DefaultModalContent = (props: IDefaultModalContentProps) => {
-  const { ariaEnabled, ariaProps, handleClose } = props
+export const DefaultModalContent: React.FC<DefaultModalContentProps> = ({ ariaEnabled, ariaProps, handleClose }) => {
   const labelId = ariaEnabled && ariaProps
     ? ariaProps['aria-labelledby']
     : undefined
