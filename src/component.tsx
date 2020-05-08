@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import { createPortal } from 'react-dom'
 import { RemoveScroll } from 'react-remove-scroll'
 import { DefaultModalContent } from './components'
 import {
@@ -10,11 +10,9 @@ import {
   defferCall,
 } from './helpers'
 import { renderButton, renderCloseIcon, renderDimmer } from './renderers'
+import { ESC_KEY, WRAPPER_COMPONENT_ID } from './constants'
 import { IModalProps } from './types'
 import styles from './style.scss'
-
-const ESC_KEY = 27
-const WRAPPER_COMPONENT_ID = 'hyper-modal-wrapper_component_id'
 
 export const HyperModal: React.FC<IModalProps> = ({
   afterClose,
@@ -252,9 +250,9 @@ export const HyperModal: React.FC<IModalProps> = ({
     if (!isInnerOpen && unmountOnClose) {
       return (null)
     }
-    if (portalMode && ReactDOM.createPortal) {
+    if (portalMode && createPortal) {
       const node = portalNode || createElement(classes && classes.portalWrapperClassName)
-      return ReactDOM.createPortal(
+      return createPortal(
         renderModalWrapper(),
         node,
       )
