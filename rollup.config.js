@@ -35,9 +35,7 @@ export default {
             modules: {
                 generateScopedName: '[local]___[hash:base64:5]'
             },
-            extract: false,
-            writeDefinitions: true,
-            namedExports: true
+            autoModules: false
         }),
         url(),
         svgr(),
