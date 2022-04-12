@@ -1,38 +1,38 @@
 .stackWrapper {
-  position: relative;
-  width: 60%;
-  height: 60%;
-  display: flex;
-  justify-content: center;
+    position: relative;
+    width: 60%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
 }
 
 .hyperModalContentWrapper {
-  position: absolute;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  background-color: #ffffff;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  border-radius: 10px;
-  overflow: auto;
-
-  &.fullscreen {
+    position: absolute;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: #ffffff;
     width: 100%;
     height: 100%;
-  }
+    z-index: 5;
+    border-radius: 10px;
+    overflow: auto;
 
-  .hyperCloseIconWrapper {
-    position: absolute;
-    display: block;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    top: 20px;
-    right: 20px;
-    transition: all 0.1s ease;
-
-    &:hover {
-      transform: rotate(90deg);
+    &.fullscreen {
+        width: 100%;
+        height: 100%;
     }
-  }
+
+    .hyperCloseIconWrapper {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        right: 20px;
+        transition: all 0.1s ease;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
 }

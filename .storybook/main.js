@@ -1,41 +1,38 @@
-const path = require("path");
-const SRC_PATH = path.join(__dirname, '../src');
-const STORIES_PATH = path.join(__dirname, '../src/stories');
-const EXCLUDE_PATH = path.join(__dirname, '../node_modules');
+const path = require('path')
 
 module.exports = {
-  stories: ['../src/**/*.stories.tsx'],
-  webpackFinal: async config => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      include: [SRC_PATH, STORIES_PATH],
-      exclude: EXCLUDE_PATH,
-      use: [
-        {
-          loader: require.resolve('awesome-typescript-loader'),
-          options: {
-            configFileName: './tsconfig.json'
-          }
-        }
-      ]
-    }, {
-      test: /\.scss$/,
-      loaders: [
-        require.resolve('style-loader'),
-        {
-          loader: require.resolve('css-loader'),
-          options: {
-            modules: {
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-            },
-            localsConvention: 'camelCaseOnly',
-            importLoaders: 1,
-          },
-        },
-        require.resolve('sass-loader')
-      ],
-    });
-    config.resolve.extensions.push('.ts', '.tsx', '.scss', '.sass');
-    return config;
-  },
-};
+    stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+    addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+    framework: '@storybook/react',
+    core: {
+        builder: 'webpack5'
+    },
+    webpackFinal: async (config, { configType }) => {
+        // Make whatever fine-grained changes you need
+        config.module.rules.push({
+            test: /\.scss$/,
+            use: [
+                {
+                    loader: 'style-loader'
+                },
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            localIdentName: '[name]__[local]',
+                            exportLocalsConvention: 'camelCaseOnly'
+                        },
+                        importLoaders: 1
+                    }
+                },
+                {
+                    loader: 'sass-loader'
+                }
+            ],
+            include: path.resolve(__dirname, '../')
+        })
+
+        // Return the altered config
+        return config
+    }
+}

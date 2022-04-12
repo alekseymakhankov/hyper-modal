@@ -5,6 +5,4 @@ export * from './types'
 
 export default HyperModal
 
-export {
-  ModalStack,
-}
+export { ModalStack }

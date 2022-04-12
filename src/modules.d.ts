@@ -1,6 +1,6 @@
 declare module '*.scss' {
-  const content: { [className: string]: string }
-  export default content
+    const content: { [className: string]: string }
+    export default content
 }
 
 declare module 'body-scroll-lock/lib/bodyScrollLock.es6'
