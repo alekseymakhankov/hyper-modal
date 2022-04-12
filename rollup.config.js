@@ -33,7 +33,7 @@ export default {
         postcss({
             inject: true,
             modules: {
-                generateScopedName: '[local]'
+                generateScopedName: '[local]___[hash:base64:5]'
             }
         }),
         url(),
