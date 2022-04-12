@@ -34,7 +34,10 @@ export default {
             inject: true,
             modules: {
                 generateScopedName: '[local]___[hash:base64:5]'
-            }
+            },
+            extract: false,
+            writeDefinitions: true,
+            namedExports: true
         }),
         url(),
         svgr(),
